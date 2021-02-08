@@ -1,0 +1,16 @@
+/home/sbailleul/Documents/ESGI/CleanCode/CleanCodeTp/CleanCodeTp/bin/Debug/net5.0/CleanCodeTp
+/home/sbailleul/Documents/ESGI/CleanCode/CleanCodeTp/CleanCodeTp/bin/Debug/net5.0/CleanCodeTp.deps.json
+/home/sbailleul/Documents/ESGI/CleanCode/CleanCodeTp/CleanCodeTp/bin/Debug/net5.0/CleanCodeTp.runtimeconfig.json
+/home/sbailleul/Documents/ESGI/CleanCode/CleanCodeTp/CleanCodeTp/bin/Debug/net5.0/CleanCodeTp.runtimeconfig.dev.json
+/home/sbailleul/Documents/ESGI/CleanCode/CleanCodeTp/CleanCodeTp/bin/Debug/net5.0/CleanCodeTp.dll
+/home/sbailleul/Documents/ESGI/CleanCode/CleanCodeTp/CleanCodeTp/bin/Debug/net5.0/ref/CleanCodeTp.dll
+/home/sbailleul/Documents/ESGI/CleanCode/CleanCodeTp/CleanCodeTp/bin/Debug/net5.0/CleanCodeTp.pdb
+/home/sbailleul/Documents/ESGI/CleanCode/CleanCodeTp/CleanCodeTp/obj/Debug/net5.0/CleanCodeTp.csprojAssemblyReference.cache
+/home/sbailleul/Documents/ESGI/CleanCode/CleanCodeTp/CleanCodeTp/obj/Debug/net5.0/CleanCodeTp.GeneratedMSBuildEditorConfig.editorconfig
+/home/sbailleul/Documents/ESGI/CleanCode/CleanCodeTp/CleanCodeTp/obj/Debug/net5.0/CleanCodeTp.AssemblyInfoInputs.cache
+/home/sbailleul/Documents/ESGI/CleanCode/CleanCodeTp/CleanCodeTp/obj/Debug/net5.0/CleanCodeTp.AssemblyInfo.cs
+/home/sbailleul/Documents/ESGI/CleanCode/CleanCodeTp/CleanCodeTp/obj/Debug/net5.0/CleanCodeTp.csproj.CoreCompileInputs.cache
+/home/sbailleul/Documents/ESGI/CleanCode/CleanCodeTp/CleanCodeTp/obj/Debug/net5.0/CleanCodeTp.dll
+/home/sbailleul/Documents/ESGI/CleanCode/CleanCodeTp/CleanCodeTp/obj/Debug/net5.0/ref/CleanCodeTp.dll
+/home/sbailleul/Documents/ESGI/CleanCode/CleanCodeTp/CleanCodeTp/obj/Debug/net5.0/CleanCodeTp.pdb
+/home/sbailleul/Documents/ESGI/CleanCode/CleanCodeTp/CleanCodeTp/obj/Debug/net5.0/CleanCodeTp.genruntimeconfig.cache
