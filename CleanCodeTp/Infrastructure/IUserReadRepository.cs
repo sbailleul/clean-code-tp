@@ -8,5 +8,7 @@ namespace CleanCodeTp.Infrastructure
     {
         IList<UserEntity> GetAll();
         UserEntity? GetById(string id);
+        
+        string? GetConnectedUserId( );
     }
 }

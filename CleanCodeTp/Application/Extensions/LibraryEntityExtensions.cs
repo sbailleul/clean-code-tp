@@ -22,8 +22,8 @@ namespace CleanCodeTp.Application.Extensions
                 .Where(user => user.UserType == nameof(Guest))
                 .Select(user => user.ToGuest()).ToHashSet();
             var librarian = libraryEntity.Users
-                .First(user => user.UserType == nameof(Librarian))
-                .ToLibrarian();
+                .FirstOrDefault(user => user.UserType == nameof(Librarian))
+                ?.ToLibrarian();
             return new Library(librarian, books, guests, members);
         }
 

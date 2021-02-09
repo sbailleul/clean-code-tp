@@ -20,7 +20,7 @@ namespace CleanCodeTp.Application.UsesCases
             _bookReadRepository = bookReadRepository;
         }
 
-        public bool IsAuthorized(string username)
+        public bool IsAuthorized(string? username)
         {
             var library =  _libraryReadRepository.Load().ToLibrary();
             return library.CanListBooks(new UserIdentifier(username));

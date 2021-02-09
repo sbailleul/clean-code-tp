@@ -8,5 +8,6 @@ namespace CleanCodeTp.Infrastructure.Files
     {
         public IList<UserEntity> GetAll() => FileContext.Instance.Users;
         public UserEntity? GetById(string id) => FileContext.Instance.Users.FirstOrDefault(user => user.Username == id);
+        public string? GetConnectedUserId() => FileContext.Instance.ConnectedUserId;
     }
 }

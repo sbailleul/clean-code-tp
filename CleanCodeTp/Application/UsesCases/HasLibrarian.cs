@@ -8,9 +8,9 @@ namespace CleanCodeTp.Application.UsesCases
 {
     public class HasLibrarian : INoParamHandler<bool>
     {
-        private readonly UserReadRepository _userReadRepository;
+        private readonly IUserReadRepository _userReadRepository;
 
-        public HasLibrarian(UserReadRepository userReadRepository)
+        public HasLibrarian(IUserReadRepository userReadRepository)
         {
             _userReadRepository = userReadRepository;
         }

@@ -1,19 +1,24 @@
+using System;
 using System.Threading.Tasks;
+using CleanCodeTp.Application.Entities;
 using CleanCodeTp.Application.Extensions;
+using CleanCodeTp.Domain.Books;
 using CleanCodeTp.Domain.Users;
 using CleanCodeTp.Infrastructure;
 
 namespace CleanCodeTp.Application.UsesCases
 {
-    public class BorrowBook : IHandler<BorrowBook.Command, Task>, IAuthorizedAction
+    public class BorrowBook : INoReturnHandler<BorrowBook.Command>, IAuthorizedAction
     {
         private ILibraryReadRepository _libraryReadRepository;
-        private IUserReadRepository _userReadRepository;
+        private IUserWriteRepository _userWriteRepository;
 
-        public BorrowBook(ILibraryReadRepository libraryReadRepository, IUserReadRepository userReadRepository)
+        public BorrowBook(
+            ILibraryReadRepository libraryReadRepository, IUserWriteRepository userWriteRepository
+        )
         {
             _libraryReadRepository = libraryReadRepository;
-            _userReadRepository = userReadRepository;
+            _userWriteRepository = userWriteRepository;
         }
 
         public class Command
@@ -28,13 +33,17 @@ namespace CleanCodeTp.Application.UsesCases
             public string BookTitle { get; }
         }
 
-        public Task Handle(Command command)
-        {   
+        public void Handle(Command message)
+        {
             var library = _libraryReadRepository.Load().ToLibrary();
-            library.BorrowBook()
+            var borrowedBook = library.BorrowBook(new UserIdentifier(message.Username), new BookTitle(message.BookTitle));
+            if (borrowedBook is null) throw new AggregateException("Book doesn't exists");
+            _userWriteRepository.AddBorrowedBookToUser(message.Username,
+                borrowedBook.ToBorrowedBookEntity(message.Username)
+                );
         }
 
-        public bool IsAuthorized(string username)
+        public bool IsAuthorized(string? username)
         {
             var library = _libraryReadRepository.Load().ToLibrary();
             return library.UserCanBorrowBook(new UserIdentifier(username));

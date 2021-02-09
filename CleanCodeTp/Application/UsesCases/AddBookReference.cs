@@ -7,26 +7,26 @@ using CleanCodeTp.Infrastructure;
 
 namespace CleanCodeTp.Application.UsesCases
 {
-    public class AddBookReference : IHandler<AddBookReference.AddBookCommand, Task>, IAuthorizedAction
+    public class AddBookReference : INoReturnHandler<AddBookReference.AddBookCommand>, IAuthorizedAction
     {
         private readonly ILibraryReadRepository _libraryReadRepository;
         private readonly IBookWriteRepository _bookWriteRepository;
 
         public record AddBookCommand
         {
-            public AddBookCommand(string userId, string title, string author)
+            public AddBookCommand(string? userId, string title, string author)
             {
                 UserId = userId;
                 Title = title;
                 Author = author;
             }
 
-            public string UserId { get; }
+            public string? UserId { get; }
             public string Title { get; }
             public string Author { get; }
         }
 
-        public bool IsAuthorized(string username)
+        public bool IsAuthorized(string? username)
         {
             var library = _libraryReadRepository.Load().ToLibrary();
             return library.UserCanAddBook(new UserIdentifier(username));
@@ -38,12 +38,12 @@ namespace CleanCodeTp.Application.UsesCases
             _bookWriteRepository = bookWriteRepository;
         }
 
-        public async Task Handle(AddBookCommand command)
+        public  void Handle(AddBookCommand message)
         {
-            var book = new Book(new BookTitle(command.Title), new BookAuthor(command.Author));
+            var book = new Book(new BookTitle(message.Title), new BookAuthor(message.Author));
             var library = _libraryReadRepository.Load().ToLibrary();
-            if (!library.CanAddBook(book)) return;
-            await _bookWriteRepository.Create(book.ToBookEntity());
+            if (!library.CanAddBook(book)) throw new ApplicationException("Can't add new book");
+             _bookWriteRepository.Create(book.ToBookEntity());
         }
     }
 }

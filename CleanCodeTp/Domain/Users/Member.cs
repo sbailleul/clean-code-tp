@@ -1,13 +1,16 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using CleanCodeTp.Domain.Books;
 
 namespace CleanCodeTp.Domain.Users
 {
     public class Member : IUser
     {
-        public const int BorrowLimit = 3;
+        public const int BorrowMaxLimit = 3;
+        public const int BorrowMinLimit = 0;
+
         public Member(UserIdentifier identifier, IList<BookBorrow>? borrowedBooks = null)
         {
             Identifier = identifier;
@@ -38,6 +41,24 @@ namespace CleanCodeTp.Domain.Users
             return HashCode.Combine(Identifier, BorrowedBooks);
         }
 
-        public bool CanBorrowBook() => BorrowedBooks.Count == BorrowLimit;
+        public BookBorrow BorrowBook(Book book)
+        {
+            var bookBorrow = new BookBorrow(DateTime.Now, book);
+            BorrowedBooks.Add(bookBorrow);
+            return bookBorrow;
+        }
+        
+        public void ReturnBook(BookTitle title)
+        {
+            var borrow = BorrowedBooks.FirstOrDefault(book => book.Book.Title.Equals(title));
+            if (borrow is not null) BorrowedBooks.Remove(borrow);
+        }
+
+        public bool CanBorrowBook() => BorrowedBooks.Count < BorrowMaxLimit;
+
+        public bool CanReturnBook(BookTitle bookTitle) =>
+            BorrowedBooks.Any(borrow => borrow.Book.Title.Equals(bookTitle));
+
+        public bool CanReturnBook() => BorrowedBooks.Count > BorrowMinLimit;
     }
 }

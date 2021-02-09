@@ -7,7 +7,7 @@ namespace CleanCodeTp.Infrastructure
 {
     public interface IBookWriteRepository
     {
-        Task Create(BookEntity book);   
+        void Create(BookEntity book);   
     }
 }
 

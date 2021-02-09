@@ -7,10 +7,10 @@ namespace CleanCodeTp.Infrastructure.Files
 {
     class LibraryWriteRepository : ILibraryWriteRepository
     {
-        public async Task Save(LibraryEntity library)
+        public void Save(LibraryEntity library)
         {
             FileContext.Instance.Library = library;
-            await FileContext.Instance.Save();
+            FileContext.Instance.Save();
         }
     }
 }

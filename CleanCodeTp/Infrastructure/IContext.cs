@@ -4,6 +4,6 @@ namespace CleanCodeTp.Infrastructure
 {
     public interface IContext
     {
-        public Task Init();
+        public void Init();
     }
 }

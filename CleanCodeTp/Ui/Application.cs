@@ -9,13 +9,15 @@ namespace CleanCodeTp.Ui
 {
     class Application
     {
-        public async Task Run()
+        public void Run()
         {
             
-            IHandler<AddBookReference.AddBookCommand, Task> useCase = new AddBookReference(new LibraryReadRepository(), new BookWriteRepository());
-            var test = new LibraryReadRepository();
-            var res =  test.Load();
-            Console.WriteLine(res);
+            Menu.Run(new Printer());
+            // IHandler<AddBookReference.AddBookCommand, Task> useCase = new AddBookReference(new LibraryReadRepository(), new BookWriteRepository());
+            // var test = new LibraryReadRepository();
+            // var res =  test.Load();
+            // Console.WriteLine(res);
+            
             
         }
     }

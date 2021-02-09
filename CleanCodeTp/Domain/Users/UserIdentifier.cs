@@ -2,7 +2,7 @@ namespace CleanCodeTp.Domain.Users
 {
     public record UserIdentifier
     {
-        public UserIdentifier(string identifier)
+        public UserIdentifier(string? identifier)
         {
             Identifier = identifier;
         }

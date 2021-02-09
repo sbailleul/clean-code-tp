@@ -7,12 +7,12 @@ namespace CleanCodeTp
 {
     class Program
     {
-        static async Task Main(string[] args)
+        static void Main(string[] args)
         {
-            await FileContext.Instance.Init();
-            
+            FileContext.Instance.Init();
+
             var application = new Ui.Application();
-            await application.Run();
+            application.Run();
         }
     }
 }

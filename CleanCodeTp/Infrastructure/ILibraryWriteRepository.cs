@@ -5,6 +5,6 @@ namespace CleanCodeTp.Infrastructure
 {
     public interface ILibraryWriteRepository
     {
-        Task Save(LibraryEntity library);
+        void Save(LibraryEntity library);
     }
 }

@@ -9,13 +9,12 @@ namespace CleanCodeTp.Application.Extensions
 {
     public static class LibraryExtensions
     {
-
-        public static UserEntity ToUserEntity(this IUser librarian) =>
-            new UserEntity(librarian.Identifier.Identifier, librarian.Type.TypeName);
+        public static UserEntity ToUserEntity(this IUser user) =>
+            new UserEntity(user.Type.TypeName, user.Identifier.Identifier );
 
         public static UserEntity ToUserEntity(this Member member) => new UserEntity(
-            member.Identifier.Identifier,
             member.Type.TypeName,
+            member.Identifier.Identifier,
             member.BorrowedBooks
                 .Select(borrow => borrow.ToBorrowedBookEntity(member))
                 .ToList()
@@ -26,5 +25,8 @@ namespace CleanCodeTp.Application.Extensions
 
         public static BookBorrowEntity ToBorrowedBookEntity(this BookBorrow borrow, IUser user) =>
             new(borrow.BorrowDate, user.Identifier.Identifier, borrow.Book.Title.Title);
+
+        public static BookBorrowEntity ToBorrowedBookEntity(this BookBorrow borrow, string username) =>
+            new(borrow.BorrowDate, username, borrow.Book.Title.Title);
     }
 }

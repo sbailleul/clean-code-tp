@@ -5,6 +5,10 @@ namespace CleanCodeTp.Infrastructure
 {
     public interface IUserWriteRepository
     {
-        Task Create(UserEntity user);
+        void Create(UserEntity user);
+        void AddBorrowedBookToUser(string commandUsername, BookBorrowEntity bookBorrowEntity);
+        void RemoveBorrowedBookToUser(string commandUsername, string bookTitle);
+
+        void SetConnectedUserId(string? userId);
     }
 }
